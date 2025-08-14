@@ -15,7 +15,9 @@
 
 .logInBox {
     background-color: #fff;
-    border: 12px;
+    border: 4px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(90deg, var(--rk-purple), var(--rk-blue), var(--rk-pink));
     padding: 32px;
     box-shadow: 20px 20px 12px rgba(162,89,230,0.08);
     border-radius: 20px;
@@ -38,5 +40,7 @@
 }
 
 .logInButton:hover {
-    background: #4500b5;
+    background: linear-gradient(90deg, var(--rk-blue), var(--rk-purple), var(--rk-pink));
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(162, 89, 230, 0.3);
 }

@@ -1,18 +1,20 @@
 import React, { useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Profile.css'
 
 const Profile = () => {
     const [user, setUser] = useState({
         username : 'Username',
-        bio: "Tell us about yourself",
-        avatar: 'Placeholder'
+        email: 'user@example.com'
     });
     
     const [isEditing, setIsEditing] = useState(false);
     const [editForm, setEditForm] = useState({
         username: user.username,
-        bio: user.bio
+        email: user.email
     });
+
+    const navigate = useNavigate();
 
     const handleProfileEdit = (e) => {
         setIsEditing(true);
@@ -22,7 +24,7 @@ const Profile = () => {
         setUser({
             ...user, 
             username: editForm.username,
-            bio: editForm.bio
+            email: editForm.email
         });
         setIsEditing(false);
     }
@@ -30,7 +32,7 @@ const Profile = () => {
     const handleCancel = () => {
         setEditForm ({
             username: user.username,
-            bio: user.bio
+            email: user.email
         });
         setIsEditing(false);
     };
@@ -41,6 +43,14 @@ const Profile = () => {
             ...prev,
             [name] : value
         }));
+    };
+
+    const handleViewResults = () => {
+        navigate('/results');
+    };
+
+    const handleViewPassages = () => {
+        navigate('/documents');
     };
 
     return (
@@ -57,51 +67,48 @@ const Profile = () => {
                     </div>
 
                     <div className = "profileContent">
-                        {/* Avatar Section */}
-                        <div className = "avatarSection">
-                            <div className = "avatarContainer">
-                                <img 
-                                    src = {user.avatar}
-                                    alt = "User Avatar"
-                                    className = "userAvatar"
-                            />
-                                <div className = "avatarOverlay">
-                                    {/* <span className = "avatarEditIcon">📝</span> */}
-                                </div>
+                        {/* Username Section*/}
+                        <div className = "usernameSection">
+                            <label className = "fieldLabel">Username</label>
+                            {isEditing? (
+                                <input 
+                                    type = "text"
+                                    name = "username" 
+                                    value = {editForm.username}
+                                    onChange ={handleInputChange}
+                                    className = "editInput"
+                                    placeholder = "Enter username"
+                                />
+                            ):(
+                                <div className = "usernameDisplay">{user.username}</div>
+                            )}
                         </div>
-                    </div>
 
-                    {/* Username Section*/}
-                    <div className = "usernameSection">
-                        <label className = "fieldLabel">Username</label>
-                        {isEditing? (
-                            <input 
-                                type = "text"
-                                name = "username" 
-                                value = {editForm.username}
-                                onChange ={handleInputChange}
-                                className = "editInput"
-                                placeholder = "Enter username"
-                            />
-                        ):(
-                            <div className = "usernameDisplay">{user.username}</div>
-                        )}
-                    </div>               
-                    {/*bio Section */}
-                    <div className = "bioSection">
-                    <label className = "fieldLabel">bio</label>
-                        {isEditing? (
-                            <textarea
-                            name = "bio"
-                            value = {editForm.bio}
-                            onChange = {handleInputChange}
-                            className = "editbio"
-                            placeholder='Tell us about yourself...'
-                            rows ={4}
-                            />
-                        ):(
-                            <div className = "bioDisplay">{user.bio}</div>
-                        )}
+                        {/* Email Section*/}
+                        <div className = "emailSection">
+                            <label className = "fieldLabel">Email</label>
+                            {isEditing? (
+                                <input 
+                                    type = "email"
+                                    name = "email" 
+                                    value = {editForm.email}
+                                    onChange ={handleInputChange}
+                                    className = "editInput"
+                                    placeholder = "Enter email"
+                                />
+                            ):(
+                                <div className = "emailDisplay">{user.email}</div>
+                            )}
+                        </div>
+
+                        {/* Navigation Buttons */}
+                        <div className = "navigationButtons">
+                            <button className = "navButton resultsButton" onClick={handleViewResults}>
+                                View My Results
+                            </button>
+                            <button className = "navButton passagesButton" onClick={handleViewPassages}>
+                                My Uploaded Passages
+                            </button>
                         </div>
 
                         {/* Buttons*/}

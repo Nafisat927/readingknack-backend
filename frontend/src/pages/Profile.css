@@ -55,16 +55,20 @@ body {
     padding: 20px;
     font-size: 18px;
     border-radius: 25px;
-    background-color: #fff;
+    background: linear-gradient(90deg, var(--rk-pink), var(--rk-purple), var(--rk-blue));
+    color: white;
     font-weight: bold;
-    border: 2px solid;
+    border: none;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: all 0.2s ease;
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
 }
 
 .editButton:hover {
     transform: translateY(-5px);
+    background: linear-gradient(90deg, var(--rk-blue), var(--rk-purple), var(--rk-pink));
+    box-shadow: 0 4px 12px rgba(162, 89, 230, 0.3);
 }
 
 .profileContent {
@@ -74,52 +78,7 @@ body {
     gap: 30px;
 }
 
-.avatarSection {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-.avatarContainer {
-    position: relative;
-    cursor: pointer;
-    transition: transform 0.2 ease;
-}
-
-.avatarContainer:hover {
-    transform : scale(1.05);
-}
-
-.userAvatar {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    /* border: 4px solid purple; */
-    box-shadow: 20px 20px 12px rgba(162,89,230,0.08) ;
-}
-
-.avatarOverlay {
-   position: absolute;
-   bottom: 0;
-   right: 0;
-   border-radius: 50%;
-   width: 35px;
-   height: 35px;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   /* border: 4px solid purple; */
-   /* background: purple; */
-   box-shadow: 20px 20px 12px rgba(162,89,230,0.08)
-}
-
-.avatarEditIcon {
-    font-size: 24px;
-    color: black;
-}
-
-.usernameSection {
+.usernameSection, .emailSection {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -132,53 +91,72 @@ body {
     letter-spacing: 0.5px;
 }
 
-.usernameDisplay {
-    /* border: 3px solid purple; */
+.usernameDisplay, .emailDisplay {
     font-weight: 600;
     padding: 15px;
     border-radius: 10px;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
 }
 
 .editInput {
     padding: 15px;
-    /* border: 2px solid purple;  */
+    border: 2px solid #e9ecef;
     border-radius: 10px;
     font-size: 1rem;
     transition: border-color 0.2s ease;
-
 }
 
 .editInput:focus {
     outline: none;
-    border-color: purple;
+    border-color: var(--rk-purple);
     background: white;
 }
 
-.bioSection {
+/* Navigation Buttons */
+.navigationButtons {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
 }
 
-.bioDisplay {
-    padding: 15px;
-    border-radius: 10px;
-    /* border: 3px solid purple; */
-    display: flex;
-    align-items: center;
+.navButton {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 200px;
+    color: white;
 }
 
-.editbio {
-    outline: none;
-    background: white;
-    border-color: purple;
-    font-size: 12px;
+.resultsButton {
+    background: linear-gradient(90deg, var(--rk-pink), var(--rk-purple), var(--rk-blue));
+}
+
+.resultsButton:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(90deg, var(--rk-blue), var(--rk-purple), var(--rk-pink));
+    box-shadow: 0 4px 12px rgba(162, 89, 230, 0.3);
+}
+
+.passagesButton {
+    background: linear-gradient(90deg, var(--rk-purple), var(--rk-blue), var(--rk-pink));
+}
+
+.passagesButton:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(90deg, var(--rk-pink), var(--rk-blue), var(--rk-purple));
+    box-shadow: 0 4px 12px rgba(162, 89, 230, 0.3);
 }
 
 .actionButtons {
     display: flex;
     gap: 15px;
-    justify-content: 15px;
+    justify-content: center;
     margin-top: 20px;
 }
 
@@ -191,24 +169,27 @@ body {
     cursor: pointer;
     transition: all 0.2s ease;
     min-width: 120px;
+    color: white;
 }
 
-/* .saveButton {
-    border: 2px solid purple;
-    box-shadow: 20px 20px 12px rgba(162,89,230,0.0);
-} */
+.saveButton {
+    background: linear-gradient(90deg, var(--rk-pink), var(--rk-purple), var(--rk-blue));
+}
 
 .saveButton:hover {
-    transform: translateY(-5px);
-    box-shadow:20px 20px 12px rgba(162,89,230,0.0) ;
+    transform: translateY(-3px);
+    background: linear-gradient(90deg, var(--rk-blue), var(--rk-purple), var(--rk-pink));
+    box-shadow: 0 4px 12px rgba(162, 89, 230, 0.3);
 }
 
-/* .cancelButton {
-    border: 2px solid purple;
-} */
+.cancelButton {
+    background: linear-gradient(90deg, var(--rk-purple), var(--rk-blue), var(--rk-pink));
+}
 
 .cancelButton:hover {
-    transform: translateY(-5px);
+    transform: translateY(-3px);
+    background: linear-gradient(90deg, var(--rk-pink), var(--rk-purple), var(--rk-blue));
+    box-shadow: 0 4px 12px rgba(162, 89, 230, 0.3);
 }
 
 

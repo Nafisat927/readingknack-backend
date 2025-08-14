@@ -52,17 +52,8 @@ const Navbar = () => {
         <Link to="/profile" className="btn">Profile</Link>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-        <Link to="/login" className="btn" style={{
-          background: '#fff',
-          color: 'var(--rk-purple)',
-          border: '2px solid var(--rk-purple)',
-          boxShadow: 'none',
-        }}>Log In</Link>
-        <Link to="/signup" className="btn" style={{
-          background: 'linear-gradient(90deg, var(--rk-purple), var(--rk-blue), var(--rk-pink))',
-          color: '#fff',
-          border: 'none',
-        }}>Sign Up</Link>
+        <Link to="/login" className="btn">Log In</Link>
+        <Link to="/signup" className="btn">Sign Up</Link>
       </div>
     </nav>
   );
