@@ -11,11 +11,11 @@ load_dotenv()
 # Configure Gemini with API key
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
-# Primary and fallback models
-PRIMARY_MODEL = "gemini-1.5-flash"
-FALLBACK_MODEL = "gemini-1.5-pro"
+# Primary and fallback models (updated for free tier compatibility)
+PRIMARY_MODEL = "gemini-2.0-flash-001"  # Stable Gemini 2.0 Flash
+FALLBACK_MODEL = "gemini-2.5-flash"     # Stable Gemini 2.5 Flash
 
-def generate_questions(text):
+def generate_questions(text): #takes in passage text 
     """
     Given a passage of text, generate 7 reading comprehension questions, using Gemini.
     Falls back to another model if the first one fails.
@@ -43,16 +43,17 @@ Answer: B
 Passage:
 {text}"""
 
-    
+    #try each model 
     for model_name in [PRIMARY_MODEL, FALLBACK_MODEL]:
         try:
             print(f"Trying Gemini model: {model_name}...")
             model = genai.GenerativeModel(model_name)
             response = model.generate_content(prompt)
             return response.text
+        #log errors and proceed to next model
         except Exception as e:
             print(f"⚠️ Error with {model_name}: {e}")
-    
+    #if both models fail
     return "❌ Failed to generate questions."
 
 def parse_questions(raw_text):
@@ -68,7 +69,7 @@ def parse_questions(raw_text):
     questions = []
     current_question = None
 
-    # Detect lines like "**1. What is X?**"
+    #regex patterns to identify question, choices, and answers in the text.
     question_pattern = re.compile(r'^\*\*\d+\.\s*(.+?)\*\*')
     choice_pattern = re.compile(r'^[A-D]\)\s*(.+)')
     answer_pattern = re.compile(r'^Answer:\s*([A-D])')
@@ -100,11 +101,12 @@ def parse_questions(raw_text):
                     "choice_text": choice_text.strip(),
                     "is_correct": False
                 })
+                #mark correct answer
         elif answer_pattern.match(line) and current_question:
             correct_letter = answer_pattern.match(line).group(1)
             for ans in current_question["answers"]:
                 ans["is_correct"] = (ans["choice_letter"] == correct_letter)
-
+    #append last parsed question 
     if current_question:
         questions.append(current_question)
 
@@ -124,7 +126,7 @@ def save_parsed_questions(document, parsed_questions):
     """
     try:
         print(f"🔄 Attempting to save {len(parsed_questions)} questions to database...")
-        
+        #all DB operations succeed or none are saved
         with transaction.atomic():
             for q in parsed_questions:
                 print(f"📝 Creating question: {q['question_text'][:50]}...")

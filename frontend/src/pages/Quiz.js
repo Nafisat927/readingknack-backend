@@ -185,8 +185,8 @@ import './Quiz.css';
   answers: answersArray
   });
 
-  // Navigate to results page with quiz data
-  navigate('/profile', {
+  // Navigate to quiz results page with quiz data
+  navigate('/quiz-results', {
   state: {
   quizResult: response.data,
   document: document,
