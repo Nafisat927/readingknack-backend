@@ -23,10 +23,15 @@ const Profile = () => {
         setUser(userData);
       } else {
         setError('Failed to fetch user profile');
+        setUser(null); // Clear user state
       }
     } catch (err) {
       console.error('Error fetching user profile:', err);
       setError('Failed to load profile. Please try again.');
+      setUser(null); 
+      if (err.response?.status === 401) {
+        navigate('/login');
+      }
     } finally {
       setLoading(false);
     }
