@@ -245,18 +245,6 @@ DATABASE_URL=sqlite:///db.sqlite3
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## License 📄
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Support 💬
-
-If you have any questions or need help:
-
-1. Check the [Issues](https://github.com/yourusername/readingknack/issues) page
-2. Create a new issue with a detailed description
-3. Join our community discussions
-
 ## Roadmap 🗺️
 
 - [ ] User authentication and profiles
