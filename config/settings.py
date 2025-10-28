@@ -89,6 +89,9 @@ DATABASES = {
         ssl_require=True,   # Supabase needs SSL
     )
 }
+DATABASES['default']['OPTIONS'] = {
+    'connect_timeout': 10,
+}
 
 
 # Password validation

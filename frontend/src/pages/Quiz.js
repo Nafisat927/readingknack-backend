@@ -346,19 +346,36 @@ import './Quiz.css';
   </div>
   </div>
 
-  {/* Submit Button */}
+  {/* Navigation Buttons */}
+  <div className="question-navigation">
+  <button
+  onClick={() => setCurrentQuestion(prev => Math.max(0, prev - 1))}
+  disabled={currentQuestion === 0}
+  className="nav-button nav-button-previous"
+  >
+  Previous
+  </button>
+  
   <button
   onClick={() => {
   if (currentQuestion < questions.length - 1) {
   setCurrentQuestion(prev => prev + 1);
-  } else {
-  handleSubmit();
   }
   }}
+  disabled={currentQuestion === questions.length - 1}
+  className="nav-button nav-button-next"
+  >
+  Next
+  </button>
+  </div>
+
+  {/* Submit Button */}
+  <button
+  onClick={handleSubmit}
   disabled={submitting}
   className="submit-button"
   >
-  {submitting ? 'Submitting...' : currentQuestion < questions.length - 1 ? 'Next Question' : 'Submit Quiz'}
+  {submitting ? 'Submitting...' : 'Submit Quiz'}
   </button>
   </div>
   </div>

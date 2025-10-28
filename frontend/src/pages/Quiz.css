@@ -125,6 +125,38 @@
     font-size: 0.95rem;
    }
    
+   /* Question navigation */
+   .question-navigation {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+   }
+   
+   .nav-button {
+    flex: 1;
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #1a1a1a;
+   }
+   
+   .nav-button:hover:not(:disabled) {
+    border-color: var(--rk-purple);
+    background: #f8f4ff;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(162, 89, 230, 0.15);
+   }
+   
+   .nav-button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+   }
+   
    /* Submit button */
    .submit-button {
     background: linear-gradient(90deg, var(--rk-pink), var(--rk-purple), var(--rk-blue));
@@ -144,6 +176,11 @@
     background: linear-gradient(90deg, var(--rk-blue), var(--rk-purple), var(--rk-pink));
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(162, 89, 230, 0.3);
+   }
+   
+   .submit-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
    }
    
    .submit-button:active {
